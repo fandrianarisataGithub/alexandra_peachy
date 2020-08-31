@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,height=device-height">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-              body {
+   <!-- <link rel="stylesheet" href="style.css"> -->
+   <style>
+        body {
                 background :  rgba(0,0,0,.8) ;
             }
             .container {
@@ -56,13 +57,13 @@
                 top: 100px
             }
             .text_sous_logo {
-                transition: all 0.75s linear; 
+                transition: all 1.5s linear; 
                 display: none;
                 position: relative;
                 top: 100px
             }
             .download {
-                transition: all 1.5s linear; 
+                transition: all 2.2s linear; 
                 display: none;
                  position: relative;
                 top: 100px
@@ -162,6 +163,7 @@
                 position: relative ;
                transform: scale(0) ;
                 transition : transform 0.2s linear;
+                
 
             }
 
@@ -645,13 +647,11 @@
                 right: 5px;
               }
             }
-        
-
-    </style>
+   </style>
 
 </head>
 
-<body>
+<body style="background-image: url(https://www.cjoint.com/doc/20_08/JHFlqn38cuf_decollete-img.png); background-size: cover;">
 
 
     <div class="cover"></div>
@@ -659,9 +659,6 @@
          <div id="text_choisir">
           <img src="https://www.cjoint.com/doc/20_08/JHmj2pvXiMf_text.png" alt="Choisir une carte">
         </div>
-        <video id="debut" autoplay muted loop>
-          <source src="https://www.cjoint.com/doc/20_08/JHsnNfyvNlf_alexandra-base-video.mp4" type="video/mp4">
-        </video>
        <div id="anim_fin">
            <div class="block">
                <div class="logo inside_block">
@@ -844,13 +841,16 @@
 
 
             }) ;
+            //   $('.carte').css('opacity',"0 !important");
+            //         $('.carte').fadeOut("fast");
+
+            // anim_fin();
 
 
             function anim_fin() {
 
                 // on cache tous les autre anim et contenu
 
-                $('video#debut').fadeOut("slow");
                 $("body").css("background" , "rgb(253,167,138)");
                 
                 $('.response').fadeOut();
