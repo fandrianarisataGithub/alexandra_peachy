@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,height=device-height">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-   <style>
-       
+    <style>
+      
         body {
                 background :  rgba(0,0,0,.8) ;
             }
@@ -419,23 +418,26 @@
                 align-content: center;
                 align-items: center;
             }
-            .logo {
-               transition: all 0.5s linear; 
-                display: none;
-                 position: relative;
-                top: 100px
-            }
-            .text_sous_logo {
-                transition: all 1.5s linear; 
+            .logo { 
+                transition: all 0.8s ;
+                transition-timing-function: cubic-bezier(0, 0, 0, 1.0);
                 display: none;
                 position: relative;
-                top: 100px
+                top: 100px; 
             }
-            .download {
-                transition: all 2.2s linear; 
+            .text_sous_logo { 
+                transition: all 0.8s ;
+                transition-timing-function: cubic-bezier(0, 0, 0, 1.0);
+                display: none;
+                position: relative;
+                top: 100px;
+            }
+            .download { 
+                transition: all 0.8s ;
+                transition-timing-function: cubic-bezier(0, 0, 0, 1.0);
                 display: none;
                  position: relative;
-                top: 100px
+                top: 100px;
             }
             .logo img {
                width: 120px;
@@ -608,6 +610,10 @@
                 border:1px solid rgba(200,200,200) ;
                 text-align: center !important;
                 padding: 0px;
+                display: flex;
+              justify-content: center;
+              align-items: center;
+              
             }
 
             .discover button span {
@@ -637,13 +643,14 @@
                 border:1px solid rgba(200,200,200) ;
                 text-align: center !important;
                 padding: 0px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
 
             .response button span {
                 color: rgba(0,0,0,0.4) ;
-                position: relative !important;
-                bottom: 1px;
-                top: 0 !important;
+                
             }
 
 
@@ -1007,9 +1014,7 @@
                 right: 5px;
               }
             }
-
-
-   </style>
+    </style>
 </head>
 
 <body style="background-image: url(https://www.cjoint.com/doc/20_08/JHFlqn38cuf_decollete-img.png); background-size: cover;">
@@ -1050,7 +1055,7 @@
                    </p>
                    <div class="logo_app_store inside_block">
                     <!-- bouton download -->
-                        <a href="https://apps.apple.com/fr/app/peachy-app-de-rencontre/id1447621909">
+                        <a href="https://apps.apple.com/fr/app/peachy-app-de-rencontre/id1447621909" id="btn_cta" >
                             <img src="https://www.cjoint.com/doc/20_08/JHsnLtfc5If_logo-appstore.png" width="100" alt="logo apple store">
                         </a>
                    </div>
@@ -1133,16 +1138,6 @@
            },2500);
        }
         $(document).ready(function(){
-
-
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-              FB.init({
-                appId: '291801718730644',
-                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
-              });
-              $('#loginbutton,#feedbutton').removeAttr('disabled');
-
-            });
 
             setTimeout(function() {
                 $('#left_top').css("transform", "scale(1)");
@@ -1235,15 +1230,16 @@
             // anim_fin();
 
 
-            function anim_fin() {
+           function anim_fin() {
 
                 // on cache tous les autre anim et contenu
 
+                 // on cache tous les autre anim et contenu
+                $('.row').html('');
+                $('.response').html('');
+                $('.discover').html('');
+                $('#text_choisir').html('');
                 $("body").css("background" , "rgb(253,167,138)");
-                
-                $('.response').fadeOut();
-                $('.discover').fadeOut();
-                $('#text_choisir').fadeOut();
 
                 setTimeout(function(){
                     $('#anim_fin').css("display", "flex");
@@ -1252,14 +1248,23 @@
                     // aseho le logo 
                     $('.logo').fadeIn();
                     $('.logo').css('top','0px');
+                    // $('.logo').addClass('smooth');
+                    // $('.logo').css('transition', "all 0.5s linear");
 
                     // aseho le text logo 
                     $('.text_sous_logo').fadeIn();
                     $('.text_sous_logo').css('top','0px');
-
+                    // $('.text_sous_logo').addClass('smooth');
+                    // $('.text_sous_logo').css('transition', "all 0.5s linear");
                     // aseho le down 
-                    $('.download').fadeIn();
-                    $('.download').css('top','0px');
+                    
+                    setTimeout(function(){
+                      $('.download').fadeIn();
+                       $('.download').css('top','0px');
+                       // $('.download').addClass('smooth');
+                       // $('.download').css('transition', "all 0.5s linear");
+                    },200)
+
                 },1000)
                 
             }
@@ -1272,7 +1277,10 @@
             alert('FBPlayableAd.onCTAClick'): FbPlayableAd.onCTAClick();
         }
 
-        FbPlayableAd.onCTAClick() ;
+        document.querySelector("#btn_cta").onclick = function(){
+          FBPlayableOnCTAClick();
+        }
+        
     </script>
 </body>
 
